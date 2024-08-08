@@ -1,0 +1,55 @@
+---
+title: "R Exploring"
+format: html
+editor: visual
+---
+
+# Exploring data in R
+
+```{r}
+# load libraries ----
+library(GGally)
+library(skimr)
+library(palmerpenguins)
+library(tidyverse)
+```
+
+
+```{r}
+# Always look at it ----
+View(penguins)
+
+# Check the column names ----
+names(penguins) 
+
+# check the dimensions ----
+dim(penguins)
+
+# get a summary ----
+summary(penguins)
+
+# get a summary with skimr ----
+skimr::skim(penguins)
+
+# print the first 6 rows
+head(penguins)
+
+# print the last 6rows
+tail(penguins)
+```
+
+## Visualization
+
+```{r}
+# make a pair plot (overwhelming with all the variables) ----
+GGally::ggpairs(penguins)
+
+# make a pair plot with a select number of columns and color by species ----
+GGally::ggpairs(penguins, columns = 3:6, ggplot2::aes(color = species))
+
+# make a histogram of penguin flipper lengths ----
+ggplot(penguins, aes(x = flipper_length_mm)) +
+  geom_histogram()
+
+```
+
